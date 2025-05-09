@@ -219,9 +219,9 @@ class DataProcessor:
         return excel_data
 
 def main():
-    st.set_page_config(page_title="PDF Data Processor", layout="wide")
+    st.set_page_config(page_title="Volume Fill Data Parser", layout="wide")
     
-    st.title("PDF Data Processor")
+    st.title("Volume Fill Data Parser")
     st.markdown("""
     This application processes PDF files containing measurement data, extracts values, 
     performs statistical analysis, and generates an Excel file with data and distribution graphs.

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "locale": "English_United States.1252",
+  "metadata": {
+    "appmode": "python-streamlit",
+    "entrypoint": "Volume_fill_parser"
+  },
+  "python": {
+    "version": "3.8.10",
+    "package_manager": {
+      "name": "pip",
+      "version": "21.1.1",
+      "package_file": "requirements.txt"
+    }
+  },
+  "files": {
+    "requirements.txt": {
+      "checksum": "41472514c0495c1d609c3520f31b5b2e"
+    },
+    "README.md": {
+      "checksum": "a8cb0702859fe879aa2168b54dc3df30"
+    },
+    "Volume_fill_parser.py": {
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  }
+}

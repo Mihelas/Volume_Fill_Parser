@@ -232,6 +232,13 @@ def main():
         lower_cutoff = st.number_input("Lower Cutoff Value", value=1.0, step=0.1, format="%.1f")
         upper_cutoff = st.number_input("Upper Cutoff Value", value=3.0, step=0.1, format="%.1f")
         
+        # Add filename input in sidebar
+        output_filename = st.text_input(
+            "Output Filename",
+            value="pdf_contents_with_graphs",
+            help="Enter the desired filename (without .xlsx extension)"
+        )
+        
         st.info("""
         **Note:** Statistical analysis will only include values between the lower and upper cutoffs.
         All non-zero values will still be displayed in the Excel file.
@@ -249,6 +256,11 @@ def main():
         process_button = st.button("Process Files")
         
         if process_button:
+            # Validate filename
+            if not output_filename.strip():
+                st.error("Please enter a valid filename")
+                return
+                
             with st.spinner("Processing files... This may take a moment."):
                 try:
                     config = ProcessingConfig(
@@ -278,11 +290,14 @@ def main():
                     
                     st.success("✅ Processing complete!")
                     
-                    # Provide download button
+                    # Sanitize filename
+                    safe_filename = re.sub(r'[<>:"/\\|?*]', '', output_filename.strip())
+                    
+                    # Provide download button with custom filename
                     st.download_button(
                         label="📥 Download Excel File",
                         data=excel_data,
-                        file_name="pdf_contents_with_graphs.xlsx",
+                        file_name=f"{safe_filename}.xlsx",
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     )
                     
